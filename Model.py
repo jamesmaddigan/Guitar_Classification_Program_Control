@@ -124,7 +124,9 @@ def build_model_2(input_shape):
     :param input_shape (tuple): Shape of input set
     :return model: CNN model
     """
-
+    
+    # experimental model, this model is not used for final prediction software
+    
     model = Sequential()
     model.add(Conv2D(16, (3, 3), activation='relu', strides = (1,1), padding='same', input_shape=input_shape))
     model.add(Conv2D(32, (3, 3), activation='relu', strides = (1,1), padding='same'))
@@ -152,7 +154,8 @@ def build_model_3(input_shape):
     :param input_shape (tuple): Shape of input set
     :return model: CNN model
     """
-
+    # experimental model, this model is not used for final prediction software
+    
     model = Sequential()
     model.add(Conv2D(16, (3, 3), activation='relu', strides = (1,1), padding='same', input_shape=input_shape))
     model.add(Conv2D(32, (3, 3), activation='relu', strides = (1,1), padding='same'))
@@ -175,7 +178,8 @@ def predict(model, X, y):
     :param X: Input data
     :param y (int): Target
     """
-
+    # experimental function, used to test live input prediction
+    
     # add a dimension to input data for sample - model.predict() expects a 4d array in this case
     X = X[np.newaxis, ...] # array shape (1, 130, 13, 1)
 
@@ -196,7 +200,7 @@ if __name__ == "__main__":
 
     # create network
     input_shape = (X_train.shape[1], X_train.shape[2], 1)
-    model = build_model_1(input_shape)
+    model = build_model_1(input_shape)                              # take model one function for training and saving model for use in prediction.py
 
     # compile model
     optimiser = keras.optimizers.Adam(learning_rate=0.0001)
